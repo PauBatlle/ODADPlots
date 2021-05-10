@@ -14,21 +14,7 @@ macro bind(def, element)
 end
 
 # ╔═╡ 3d583f2a-9fce-4409-8f0d-83716b908bad
-begin
-	# We set up a new environment for this notebook
-	import Pkg
-	Pkg.activate(mktempdir())
-	
-	# This is how you add a package:
-	Pkg.add("PlutoUI")
-	using PlutoUI
-	
-	Pkg.add("Plots")
-	using Plots
-	
-	Pkg.add("Distributions")
-	using Distributions
-end
+using Plots, PlutoUI, Distributions
 
 # ╔═╡ 65a16bbf-a6e9-4199-9b4b-7bf3c99b5f38
 md""" 
