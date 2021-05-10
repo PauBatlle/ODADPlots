@@ -13,9 +13,22 @@ macro bind(def, element)
     end
 end
 
-# ╔═╡ 952f12e0-b1d6-11eb-2470-7388627c5493
-using Plots, PlutoUI, Distributions
-#BoundingSphere, Contour, Statistics, LaTeXStrings, IterTools,
+# ╔═╡ 3d583f2a-9fce-4409-8f0d-83716b908bad
+begin
+	# We set up a new environment for this notebook
+	import Pkg
+	Pkg.activate(mktempdir())
+	
+	# This is how you add a package:
+	Pkg.add("PlutoUI")
+	using PlutoUI
+	
+	Pkg.add("Plots")
+	using Plots
+	
+	Pkg.add("Distributions")
+	using Distributions
+end
 
 # ╔═╡ 65a16bbf-a6e9-4199-9b4b-7bf3c99b5f38
 md""" 
@@ -34,9 +47,8 @@ begin
 		end
 		
 		function xminmax(α)
-			aux(s) = likelihood(s, Obs)-α
-			v = x[aux.(x) .> 0]
-			return [v[1], v[end]]
+			s = sqrt(-2*σ²*log(α))
+			return [Obs-s, Obs+s]	
 		end
 	x = LinRange(-12,12,200)
 end;
@@ -80,9 +92,9 @@ begin
 end
 
 # ╔═╡ Cell order:
-# ╠═952f12e0-b1d6-11eb-2470-7388627c5493
-# ╠═edcec37a-a2ea-4104-baf4-c76a0cb26cd1
+# ╠═3d583f2a-9fce-4409-8f0d-83716b908bad
+# ╟─edcec37a-a2ea-4104-baf4-c76a0cb26cd1
 # ╟─65a16bbf-a6e9-4199-9b4b-7bf3c99b5f38
 # ╟─b8d27d20-e226-4ed5-8721-d84ae962acc6
-# ╠═61958cf2-c345-4344-ab01-46d9b88d9017
+# ╟─61958cf2-c345-4344-ab01-46d9b88d9017
 # ╟─8c704d70-a318-4763-be57-43117f9b3b19
